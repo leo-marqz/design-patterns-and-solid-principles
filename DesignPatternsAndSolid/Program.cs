@@ -1,5 +1,9 @@
-﻿using DesignPatternsAndSolid.SOLID.SRP;
+﻿using DesignPatternsAndSolid.SOLID.OCP;
+using DesignPatternsAndSolid.SOLID.OCP.Contracts;
+using DesignPatternsAndSolid.SOLID.OCP.Implementations;
+using DesignPatternsAndSolid.SOLID.SRP;
 using System;
+using System.Collections.Generic;
 
 namespace DesignPatternsAndSolid
 {
@@ -7,24 +11,26 @@ namespace DesignPatternsAndSolid
     {
         static void Main(string[] args)
         {
-            var patient = new Patient
+            List<IApplicant> applicants = new List<IApplicant>()
             {
-                Id = 1,
-                Name = "Elmer Marquez",
-                Email = "elmarqz@hotmail.com",
-                Address = "Colonia Santa Fe, .....etc"
+                new CloudEngineer { FirstName = "Elmer", LastName = "Marquez" },
+                new SoftwareEngineer { FirstName = "Leo", LastName = "Marqz" },
+                new CybersecurityEngineer { FirstName = "Crack", LastName = "Night" },
+                new User { FirstName = "Any", LastName = "User" }
             };
 
-            var appointment = new Appointment
+            List<Staff> staffs = new List<Staff>();
+
+            foreach (var applicant in applicants)
             {
-                Patient = patient,
-                Date = DateTime.Now.AddDays(15),
-                IsApproved = false
-            };
+                staffs.Add( applicant.Processor.CreateAccount( applicant ) );
+            }
 
-            var response = AppointmentService.Schedule( appointment );
+            foreach (var staff in staffs)
+            {
+                Console.WriteLine( staff );
+            }
 
-            Console.WriteLine( response );
         }
     }
 }

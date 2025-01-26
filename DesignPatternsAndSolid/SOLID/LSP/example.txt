@@ -1,0 +1,7 @@
+
+===================================
+Liskov Substitution Principle (LSP)
+===================================
+
+Los objetos de una clase derivada deben poder sustituir a los de su clase base 
+sin alterar el funcionamiento del programa.

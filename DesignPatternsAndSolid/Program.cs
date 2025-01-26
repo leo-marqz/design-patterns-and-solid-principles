@@ -11,26 +11,7 @@ namespace DesignPatternsAndSolid
     {
         static void Main(string[] args)
         {
-            List<IApplicant> applicants = new List<IApplicant>()
-            {
-                new CloudEngineer { FirstName = "Elmer", LastName = "Marquez" },
-                new SoftwareEngineer { FirstName = "Leo", LastName = "Marqz" },
-                new CybersecurityEngineer { FirstName = "Crack", LastName = "Night" },
-                new User { FirstName = "Any", LastName = "User" }
-            };
-
-            List<Staff> staffs = new List<Staff>();
-
-            foreach (var applicant in applicants)
-            {
-                staffs.Add( applicant.Processor.CreateAccount( applicant ) );
-            }
-
-            foreach (var staff in staffs)
-            {
-                Console.WriteLine( staff );
-            }
-
+            Console.WriteLine("hello world");
         }
     }
 }
